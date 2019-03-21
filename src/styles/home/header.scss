@@ -1,0 +1,63 @@
+.container{
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+}
+
+ul{
+ margin: 0;
+ padding: 0;
+}
+
+header{
+  background-color: #2E2633;
+  padding-top: 18px;
+  min-height: 70px;
+}
+
+header h1{
+  color: #DCE9BE;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.brandname .brandname-h1{
+  font-size: 40px;
+  text-transform: none;
+}
+
+header .brandname{
+  float: left;
+}
+
+header .brandname h1{
+  margin: 0;
+}
+
+header nav{
+  float: right;
+  margin-top: 15px;
+}
+
+header li{
+  float: left;
+  list-style: none;
+  padding: 0 20px 0 20px;
+}
+
+header a{
+  color: #DCE9BE;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+}
+
+.active a{
+ color: #99173C;
+ font-weight: bold;
+}
