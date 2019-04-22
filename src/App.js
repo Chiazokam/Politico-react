@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { Home } from './containers';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Home, About } from './containers';
 import './styles/index.scss';
 
 class App extends Component {
   render()  {
     return (
-      <Home /> 
+      <BrowserRouter>
+        <Route exact path="/home" render={ () => <Home />} />
+        <Route path="/about" render={ () => <About />} />
+      </BrowserRouter>
     )
   }
 }
