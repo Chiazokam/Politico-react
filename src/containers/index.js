@@ -1,3 +1,4 @@
 import Home from './home/Layout';
+import About from './about/Layout';
 
-export { Home };
+export { Home, About };

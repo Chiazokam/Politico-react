@@ -19,3 +19,22 @@
  font-size: 40px;
  font-weight: bold;
 }
+
+@media(max-width:768px){
+  #showcase{
+    height: 75vh;
+    padding-top: 20%;
+   }
+  
+  #showcase h1{
+    font-size: 45px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+  }
+  
+  #showcase p{
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20%;
+  }
+}

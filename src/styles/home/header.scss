@@ -61,3 +61,77 @@ header a{
  color: #99173C;
  font-weight: bold;
 }
+
+header{
+        padding: 20px 0 20px 0;
+        min-height: 30px;
+    }
+
+    .hamburger{
+        width: 35px;
+        height: 5px;
+        margin: 6px 0;
+        background-color: #DCE9BE;
+      }
+
+    .brandname{
+          float: left
+      }
+
+    .menu-ham{
+      display: none;
+        margin-top: 10px;
+        float: right;
+        cursor: pointer;
+      }
+
+
+@media(max-width:768px){
+
+  header{
+    padding: 20px 0 20px 0;
+    min-height: 30px;
+  }
+  
+  .hamburger{
+    width: 35px;
+    height: 5px;
+    background-color: #f5f6fa;
+    margin: 6px 0;
+    background-color: #DCE9BE;
+  }
+  
+  .brandname{
+      float: left;
+  }
+  
+  .menu-ham{
+    display: block;
+    margin-top: 10px;
+    float: right;
+    cursor: pointer;
+  }
+
+  header li{
+    float: none;
+    list-style: none;
+    padding: 10px 5px 10px 10px;
+    border-bottom: 1px solid #99173C;
+    display: block;
+}
+
+  .nav-menu{
+      display: none;
+      width: 100%;
+      text-align: left;
+      margin: 0;
+  }
+
+  .nav-menu-open{
+    display: block;
+    width: 100%;
+    text-align: left;
+    margin: 0;
+}
+
+}

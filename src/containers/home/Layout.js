@@ -3,7 +3,7 @@ import { Showcase } from '../../components/home';
 import { Header, Footer } from '../../components/global';
 
 const Layout = () => {
-  const navItems = ['Home', 'About', 'Sign in'];
+  const navItems = ['home', 'about', 'login'];
   return (
     <React.Fragment>
       <Header navItems={navItems}/>
