@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import '../../styles/home/header.scss';
 import NavList from './NavList';
+import Container from './Container';
 
 
 class Header extends Component {
@@ -26,7 +27,7 @@ class Header extends Component {
 
     return (
       <header>
-        <div className="container">
+        <Container>
             <div className="brandname">
               <h1><a className="brandname-h1" href="#">Politico</a></h1> 
             </div>
@@ -42,7 +43,7 @@ class Header extends Component {
                 {this.props.navItems.map((item) => <NavList key={item}><Link to={`/${item}`}>{item}</Link></NavList>)}
               </ul>
             </nav>
-          </div>
+          </Container>
       </header>
       )
   }

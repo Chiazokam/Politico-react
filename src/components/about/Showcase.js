@@ -4,7 +4,6 @@ import '../../styles/about/showcase.scss';
 class Showcase extends Component {
   render() {
     return (
-      <section>
         <div id="main-about">
           <p className="p-start">
             It’s a political season. Get into the mood of the
@@ -20,7 +19,6 @@ class Showcase extends Component {
             Politico is fast and easy to use. Get on in and no second would be wasted!
           </p>
         </div>
-      </section>
     )
   }
 }
