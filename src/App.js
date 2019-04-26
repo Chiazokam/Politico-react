@@ -7,6 +7,7 @@ class App extends Component {
   render()  {
     return (
       <BrowserRouter>
+        <Route exact path="/" render={ () => <Home />} />
         <Route exact path="/home" render={ () => <Home />} />
         <Route path="/about" render={ () => <About />} />
         <Route path="/signup" render={ () => <Signup />} />
