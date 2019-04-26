@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import { Home, About, Signup } from './containers';
+import { Home, About, Signup, Login } from './containers';
 import './styles/index.scss';
 
 class App extends Component {
@@ -10,6 +10,7 @@ class App extends Component {
         <Route exact path="/home" render={ () => <Home />} />
         <Route path="/about" render={ () => <About />} />
         <Route path="/signup" render={ () => <Signup />} />
+        <Route path="/login" render={ () => <Login/>} />
       </BrowserRouter>
     )
   }

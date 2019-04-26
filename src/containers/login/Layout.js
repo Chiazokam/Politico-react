@@ -1,9 +1,9 @@
 import React from 'react';
 import { Header, Footer, PlainStrip } from '../../components/global';
-import { Showcase } from '../../components/signup';
+import { Showcase } from '../../components/login';
 
 const Layout = () => {
-  const navItems = ['home', 'about', 'login'];
+  const navItems = ['home', 'about', 'signup'];
   return (
     <React.Fragment>
       <Header navItems={navItems}/>

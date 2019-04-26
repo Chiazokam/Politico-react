@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/signup/signup.scss';
 import '../../styles/global/form.scss';
 import '../../styles/global/container.scss';
-import { Container, FormField, Url } from '../global';
+import { Container, FormField, Url, Button } from '../global';
 
 class Showcase extends Component {
   constructor(props) {
@@ -19,12 +21,16 @@ class Showcase extends Component {
       password: '',
       errors: {},
       redirect: false,
+      submit: false
     };
   }
 
   handleSubmit = (e) => {
    e.preventDefault();
-   this.setState({errors: {}});
+   this.setState({
+     errors: {},
+     submit: true,
+    });
     const user = {
       firstname: this.state.firstname,
       lastname: this.state.lastname,
@@ -35,9 +41,15 @@ class Showcase extends Component {
       password: this.state.password
     };
     axios.post(`${Url.herokuUrl}/auth/signup`, user)
-    .then((response) => this.setState({redirect: true}))
+    .then((response) => this.setState({
+        redirect: true,
+        submit: false,
+      }))
     .catch((error) => {
-      this.setState({errors: error.response.data.error})
+      this.setState({
+        errors: error.response.data.error,
+        submit: false,
+      })
     })
   }
 
@@ -118,7 +130,14 @@ class Showcase extends Component {
               value={this.state.password} 
               placeholder="Password"/>
                                             
-            <input type="submit" className="btn btn-colored btn-signup btn-dark"></input>
+            <Button
+              className="btn btn-colored btn-signup btn-dark">
+              { this.state.submit && <FontAwesomeIcon 
+                  icon={ faSpinner }
+                  spin
+                /> }
+                &nbsp; Submit
+            </Button>
           </form>
           </Container>
         </div> 

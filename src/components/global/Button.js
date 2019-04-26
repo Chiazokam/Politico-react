@@ -5,7 +5,7 @@ class Button extends Component {
   render() {
     return (
       <React.Fragment>
-          <button type="button" className={this.props.className}>
+          <button type="submit" className={this.props.className}>
             {this.props.children}
           </button>
       </React.Fragment>
