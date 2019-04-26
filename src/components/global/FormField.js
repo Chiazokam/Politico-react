@@ -10,6 +10,7 @@ const FormField = props => {
         onChange={(e) => props.onChange(e)}
         value={props.value}
         id={props.id}
+        onFocus={(e) => props.onFocus(e)}
         placeholder={props.placeholder}>
       </input>
     </div>
