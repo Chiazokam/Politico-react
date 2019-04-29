@@ -71,9 +71,7 @@ class Showcase extends Component {
   }
 
   render() {
-    if (this.state.redirect && this.state.decode) {
-      return <Redirect to='/admin-profile' />;
-    }
+    if (this.state.redirect && this.state.decode) return <Redirect to='/admin-profile' />;
     else if (this.state.redirect && !this.state.decode) {
       return <Redirect to='/user-profile' />;
     }

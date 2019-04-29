@@ -1,0 +1,27 @@
+.create-party{
+  border-radius: 4px;
+  width: 45%;
+  height: auto;
+  text-align: left;
+  border: 1px solid #2E2633;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background-color: #2E2633;
+  color: #DCE9BE;
+  margin: 6rem auto;
+ }
+
+
+.create-party p{
+  margin: 2% 10% 0 0;
+  line-height: 2.0;
+  letter-spacing: 2px;
+  font-size: 34px;
+}
+
+@media(max-width:768px){
+  .create-party{
+    width: 90%;
+    margin: 5rem auto;
+    height: auto;
+   }
+}

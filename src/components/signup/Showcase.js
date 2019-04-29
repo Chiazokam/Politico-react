@@ -55,7 +55,11 @@ class Showcase extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value})
-  } 
+  }
+
+  clearField = (e) => {
+    this.setState({ errors: '' })
+  }
 
   render() {
     if (this.state.redirect) {
@@ -73,6 +77,7 @@ class Showcase extends Component {
               type="text"
               name="firstname"
               onChange={this.handleChange.bind(this)}
+              onFocus={this.clearField.bind(this)}
               value={this.state.firstname} 
               placeholder="First Name"/>
 
@@ -82,6 +87,7 @@ class Showcase extends Component {
               type="text"
               name="lastname"
               onChange={this.handleChange.bind(this)}
+              onFocus={this.clearField.bind(this)}
               value={this.state.lastname} 
               placeholder="Last Name"/>
 
@@ -91,6 +97,7 @@ class Showcase extends Component {
               type="text"
               name="othername"
               onChange={this.handleChange.bind(this)}
+              onFocus={this.clearField.bind(this)}
               value={this.state.othername} 
               placeholder="Other Name"/>
           
@@ -100,6 +107,7 @@ class Showcase extends Component {
               type="text"
               name="email"
               onChange={this.handleChange.bind(this)}
+              onFocus={this.clearField.bind(this)}
               value={this.state.email} 
               placeholder="Email Address"/>
 
@@ -109,6 +117,7 @@ class Showcase extends Component {
               type="text"
               name="phone"
               onChange={this.handleChange.bind(this)}
+              onFocus={this.clearField.bind(this)}
               value={this.state.phone} 
               placeholder="Phone Number"/>
 
@@ -118,6 +127,7 @@ class Showcase extends Component {
               type="text"
               name="passportUrl"
               onChange={this.handleChange.bind(this)}
+              onFocus={this.clearField.bind(this)}
               value={this.state.passportUrl} 
               placeholder="Passport Url"/>
 
@@ -127,6 +137,7 @@ class Showcase extends Component {
               type="password"
               name="password"
               onChange={this.handleChange.bind(this)}
+              onFocus={this.clearField.bind(this)}
               value={this.state.password} 
               placeholder="Password"/>
                                             
