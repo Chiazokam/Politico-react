@@ -1,23 +1,19 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Container, FormField, Url, Button } from '../global';
+import { createParty } from '../../actions';
 import '../../styles/create-party/create-party.scss';
 
 class CreateParty extends Component {
   constructor(props) {
     super(props);
-    const token = localStorage.getItem('token');
     this.state = {
       name: '',
       logoUrl: '',
-      hqAddress: '',
-      errors: {},
-      submit: false,
-      redirect: false,
-      token,
+      hqAddress: ''
     };
   }
 
@@ -32,22 +28,11 @@ class CreateParty extends Component {
       logoUrl: this.state.logoUrl,
       hqAddress: this.state.hqAddress
     };
+    const token = localStorage.getItem('token');
     const config = {
-      headers: {token: this.state.token}
-  };
-    axios.post(`${Url.herokuUrl}/parties`, party, config)
-    .then(() => {
-      this.setState({
-        submit: false,
-        redirect: true
-      });
-    })
-    .catch((error) => {
-      this.setState({
-        errors: error.response.data.error,
-        submit: false
-      });
-    })
+      headers: { token }
+   };
+   this.props.dispatch(createParty(party, config));
   }
 
   handleChange = (e) => {
@@ -59,7 +44,7 @@ class CreateParty extends Component {
   }
 
   render() {
-    if (this.state.redirect) return <Redirect to='/view-parties'/>;
+    if (this.props.redirect) return <Redirect to='/view-parties'/>;
     return (
       <div className="create-party">
         <Container>
@@ -69,7 +54,7 @@ class CreateParty extends Component {
               <FormField 
                 className='form-field'
                 type='text'
-                error={this.state.errors.name}
+                error={this.props.errors.name}
                 name='name'
                 onFocus={this.clearField.bind(this)}
                 onChange={this.handleChange.bind(this)}
@@ -80,7 +65,7 @@ class CreateParty extends Component {
               <FormField 
                 className='form-field'
                 type='text'
-                error={this.state.errors.logoUrl}
+                error={this.props.errors.logoUrl}
                 name='logoUrl'
                 onFocus={this.clearField.bind(this)}
                 onChange={this.handleChange.bind(this)}
@@ -91,7 +76,7 @@ class CreateParty extends Component {
               <FormField 
                 className='form-field'
                 type='text'
-                error={this.state.errors.hqAddress}
+                error={this.props.errors.hqAddress}
                 name='hqAddress'
                 onFocus={this.clearField.bind(this)}
                 onChange={this.handleChange.bind(this)}
@@ -115,4 +100,13 @@ class CreateParty extends Component {
   }
 }
 
-export default CreateParty;
+const mapStateToProps = state => ({
+  name: state.party.name,
+  logoUrl: state.party.logoUrl,
+  hqAddress: state.party.hqAddress,
+  errors: state.party.errors,
+  submit: state.party.submit,
+  redirect: state.party.redirect
+});
+
+export default connect(mapStateToProps)(CreateParty);

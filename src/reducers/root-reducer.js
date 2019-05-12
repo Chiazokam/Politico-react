@@ -1,8 +1,12 @@
 import { combineReducers } from "redux";
-import exampleReducer from "./example-reducer";
+import globalReducer from './global-reducer';
+import authReducer from './auth.reducer';
+import partyReducer from './party.reducers';
 
 const Reducer = combineReducers({
-    example : exampleReducer,
+    global: globalReducer,
+    auth: authReducer,
+    party: partyReducer
 });
 
 export default Reducer;
