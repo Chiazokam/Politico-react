@@ -1,68 +1,43 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/signup/signup.scss';
 import '../../styles/global/form.scss';
 import '../../styles/global/container.scss';
-import { Container, FormField, Url, Button } from '../global';
+import { Container, FormField, Button } from '../global';
+import { signupUser, clearField } from '../../actions'
+
 
 class Showcase extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstname: '',
-      lastname: '',
-      othername: '',
-      email: '',
-      phone: '',
-      passportUrl: '',
-      password: '',
-      errors: {},
       redirect: false,
-      submit: false
+      submit: false,
+      signupDetails: {}
     };
   }
 
   handleSubmit = (e) => {
    e.preventDefault();
-   this.setState({
-     errors: {},
-     submit: true,
-    });
-    const user = {
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      othername: this.state.othername,
-      email: this.state.email,
-      phone: this.state.phone,
-      passportUrl: this.state.passportUrl,
-      password: this.state.password
-    };
-    axios.post(`${Url.herokuUrl}/auth/signup`, user)
-    .then((response) => this.setState({
-        redirect: true,
-        submit: false,
-      }))
-    .catch((error) => {
-      this.setState({
-        errors: error.response.data.error,
-        submit: false,
-      })
-    })
+    const { signupDetails } = this.state;
+    this.props.dispatch(signupUser(signupDetails));
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value})
+    const { signupDetails } = this.state;
+    signupDetails[e.target.name] = e.target.value;
+    this.setState({ signupDetails })
   }
 
   clearField = (e) => {
-    this.setState({ errors: '' })
+    this.props.dispatch(clearField());
   }
 
   render() {
-    if (this.state.redirect) {
+    if (this.props.redirect) {
       return <Redirect to='/login' />;
     }
     return (
@@ -71,9 +46,10 @@ class Showcase extends Component {
 
           <p className="form-text">Sign Up</p>
           <form onSubmit={this.handleSubmit.bind(this)}>
+          { this.props.isOpen && this.handleErrors}
             <FormField 
               className="form-field" 
-              error={this.state.errors.firstname}
+              error={this.props.errors.firstname}
               type="text"
               name="firstname"
               onChange={this.handleChange.bind(this)}
@@ -83,7 +59,7 @@ class Showcase extends Component {
 
             <FormField
               className="form-field"
-              error={this.state.errors.lastname}
+              error={this.props.errors.lastname}
               type="text"
               name="lastname"
               onChange={this.handleChange.bind(this)}
@@ -93,7 +69,7 @@ class Showcase extends Component {
 
             <FormField
               className="form-field"
-              error={this.state.errors.othername}
+              error={this.props.errors.othername}
               type="text"
               name="othername"
               onChange={this.handleChange.bind(this)}
@@ -103,7 +79,7 @@ class Showcase extends Component {
           
             <FormField
               className="form-field"
-              error={this.state.errors.email}
+              error={this.props.errors.email}
               type="text"
               name="email"
               onChange={this.handleChange.bind(this)}
@@ -113,7 +89,7 @@ class Showcase extends Component {
 
             <FormField
               className="form-field"
-              error={this.state.errors.phone}
+              error={this.props.errors.phone}
               type="text"
               name="phone"
               onChange={this.handleChange.bind(this)}
@@ -123,7 +99,7 @@ class Showcase extends Component {
 
             <FormField
               className="form-field"
-              error={this.state.errors.passportUrl}
+              error={this.props.errors.passportUrl}
               type="text"
               name="passportUrl"
               onChange={this.handleChange.bind(this)}
@@ -133,7 +109,7 @@ class Showcase extends Component {
 
             <FormField
               className="form-field"
-              error={this.state.errors.password}
+              error={this.props.errors.password}
               type="password"
               name="password"
               onChange={this.handleChange.bind(this)}
@@ -143,7 +119,7 @@ class Showcase extends Component {
                                             
             <Button
               className="btn btn-colored btn-signup btn-dark">
-              { this.state.submit && <FontAwesomeIcon 
+              { this.props.submit && <FontAwesomeIcon 
                   icon={ faSpinner }
                   spin
                 /> }
@@ -154,6 +130,22 @@ class Showcase extends Component {
         </div> 
     )
   }
-} 
+}
 
-export default Showcase;
+const mapStateToProps = state => { 
+  return {
+    submit: state.auth.submit,
+    errors: state.auth.errors,
+    redirect: state.auth.redirect,
+    firstname: state.auth.firstname,
+    lastname: state.auth.lastname,
+    othername: state.auth.othername,
+    email: state.auth.email,
+    phone: state.auth.phone,
+    passportUrl: state.auth.passportUrl,
+    password: state.auth.password,
+    isOpen: state.auth.isOpen
+   };
+  }
+
+export default connect(mapStateToProps)(Showcase);
