@@ -37,4 +37,4 @@ const partyReducer = (state = initialState, action) => {
   }
 }
 
-export default partyReducer;
+export { partyReducer, initialState };

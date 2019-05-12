@@ -7,7 +7,7 @@ import { Container, FormField, Url, Button } from '../global';
 import Modal from './Reset-password-modal';
 import { showModal, closeModal } from '../../actions';
 import '../../styles/login/login.scss';
-import { signinUser, clearField } from '../../actions';
+import { signinUser } from '../../actions';
 
 class Showcase extends Component {
   constructor(props) {
@@ -101,7 +101,7 @@ const mapStateToProps = state => {
   return {
     isModalOpen: state.global.isModalOpen,
     submit: state.auth.submit,
-    errors: state.auth.errors,
+    errors: state.auth.loginErrors,
     redirect: state.auth.redirect,
     email: state.auth.email,
     password: state.auth.password,

@@ -135,7 +135,7 @@ class Showcase extends Component {
 const mapStateToProps = state => { 
   return {
     submit: state.auth.submit,
-    errors: state.auth.errors,
+    errors: state.auth.signupErrors,
     redirect: state.auth.redirect,
     firstname: state.auth.firstname,
     lastname: state.auth.lastname,
