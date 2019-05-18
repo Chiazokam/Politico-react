@@ -12,7 +12,7 @@ const signupSuccess= () => ({
   type: SIGNUP_SUCCESS,
 });
 
-const signupFailure= error => ({
+const signupFailure= (error = {}) => ({
   type: SIGNUP_FAILURE,
   payload: { error },
 });
@@ -29,7 +29,7 @@ const signinSuccess= (user, decode) => ({
    }
 });
 
-const signinFailure= error => ({
+const signinFailure = (error = {}) => ({
   type: SIGNIN_FAILURE,
   payload: { error },
 });

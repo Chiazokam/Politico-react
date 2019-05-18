@@ -29,4 +29,4 @@ const globalReducer = (state = initialState, action) => {
   }
 }
 
-export default globalReducer;
+export { globalReducer, initialState };

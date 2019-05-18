@@ -10,7 +10,8 @@ const initialState = {
   phone: '',
   passportUrl: '',
   password: '',
-  errors: {},
+  signupErrors: {},
+  loginErrors: {},
   redirect: false,
   submit: false,
   isAdmin: false
@@ -21,7 +22,7 @@ const authReducer = (state = initialState, action) => {
     case SIGNUP_BEGIN:
       return {
         ...state,
-        errors: {},
+        signupErrors: {},
         submit: true,
       }
 
@@ -35,14 +36,14 @@ const authReducer = (state = initialState, action) => {
     case SIGNUP_FAILURE:
       return {
         ...state,
-        errors: action.payload.error.response.data.error,
+        signupErrors: action.payload.error.response.data.error,
         submit: false,
       }
       
     case SIGNIN_BEGIN:
       return {
         ...state,
-        errors: {},
+        loginErrors: {},
         submit: true,
       }
 
@@ -58,7 +59,7 @@ const authReducer = (state = initialState, action) => {
     case SIGNIN_FAILURE:
       return {
         ...state,
-        errors: action.payload.error.data.error,
+        loginErrors: action.payload.error.data.error,
         submit: false,
       }
 
@@ -67,4 +68,4 @@ const authReducer = (state = initialState, action) => {
   }
 }
 
-export default authReducer;
+export { authReducer, initialState };
