@@ -9,6 +9,7 @@ import { signupBegin,
         signinUser
       } from './auth.actions';
 import { createParty } from './party.actions';
+import { getCandidacy} from './user.actions';
 
 export { showModal,
         closeModal,
@@ -21,5 +22,6 @@ export { showModal,
         signinFailure,
         signinSuccess,
         signinUser,
-        createParty
+        createParty,
+        getCandidacy
 };
