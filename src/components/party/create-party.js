@@ -44,13 +44,15 @@ class CreateParty extends Component {
   }
 
   render() {
-    if (this.props.redirect) return <Redirect to='/view-parties'/>;
+    const { errors, redirect } = this.props;
+    if (redirect) return <Redirect to='/view-parties'/>;
+    
     return (
       <div className="create-party">
         <Container>
           <p className='form-text'>Create Party</p>
             <form onSubmit={this.handleSubmit.bind(this)}>
-              <div className="error">{this.state.errors.message}</div>
+              <div className="error">{errors.message}</div>
               <FormField 
                 className='form-field'
                 type='text'
@@ -65,7 +67,7 @@ class CreateParty extends Component {
               <FormField 
                 className='form-field'
                 type='text'
-                error={this.props.errors.logoUrl}
+                error={errors.logoUrl}
                 name='logoUrl'
                 onFocus={this.clearField.bind(this)}
                 onChange={this.handleChange.bind(this)}
@@ -76,7 +78,7 @@ class CreateParty extends Component {
               <FormField 
                 className='form-field'
                 type='text'
-                error={this.props.errors.hqAddress}
+                error={errors.hqAddress}
                 name='hqAddress'
                 onFocus={this.clearField.bind(this)}
                 onChange={this.handleChange.bind(this)}

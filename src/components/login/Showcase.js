@@ -48,9 +48,9 @@ class Showcase extends Component {
   }
 
   render() {
-    if (this.props.redirect && this.props.isAdmin) return <Redirect to='/admin-profile' />;
+    if (this.props.redirect && this.props.isAdmin) return <Redirect to='/admin/profile' />;
     else if (this.props.redirect && !this.props.isAdmin) {
-      return <Redirect to='/user-profile' />;
+      return <Redirect to='/user/profile' />;
     }
     return (
       <div id="main-signin">
