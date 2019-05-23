@@ -57,6 +57,7 @@ class Showcase extends Component {
         <Container>
         { this.props.isModalOpen && <Modal onClick={this.closeModal}/> }            
           <p className="form-text">Sign In</p>
+          <p className='form-info'>All fields are compulsory</p>
           <form onSubmit={this.handleSubmit.bind(this)}>
             <div className="error">{this.props.errors.message}</div>
             <FormField 

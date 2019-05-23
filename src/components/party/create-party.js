@@ -51,6 +51,7 @@ class CreateParty extends Component {
       <div className="create-party">
         <Container>
           <p className='form-text'>Create Party</p>
+          <p className='form-info'>All fields are compulsory</p>
             <form onSubmit={this.handleSubmit.bind(this)}>
               <div className="error">{errors.message}</div>
               <FormField 
