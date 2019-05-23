@@ -45,6 +45,7 @@ class Showcase extends Component {
           <Container>
 
           <p className="form-text">Sign Up</p>
+          <p className='form-info'>All fields are compulsory</p>
           <form onSubmit={this.handleSubmit.bind(this)}>
           { this.props.isOpen && this.handleErrors}
             <FormField 
