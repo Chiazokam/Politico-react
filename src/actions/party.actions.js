@@ -1,5 +1,4 @@
 import axios from '../config/axiosConfig';
-import { Url } from '../components/global';
 import party from '../constants/party.constants';
 
 const { CREATE_PARTY_BEGIN, CREATE_PARTY_SUCCESS, CREATE_PARTY_FAILURE, GET_PARTY_SUCCESS } = party;

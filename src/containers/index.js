@@ -6,6 +6,17 @@ import CreateParty from './create-party/Layout';
 import UserProfile from './user-profile/Layout';
 import AdminProfile from './admin-profile/Layout'
 import GetParties from './get-parties/Layout';
+import CreateOffice from './create-office/Layout';
 
 
-export { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile, GetParties };
+export {
+  Home,
+  About,
+  Signup,
+  Login,
+  CreateParty,
+  UserProfile,
+  AdminProfile,
+  GetParties,
+  CreateOffice
+};

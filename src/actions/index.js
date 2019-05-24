@@ -10,6 +10,7 @@ import { signupBegin,
       } from './auth.actions';
 import { createParty, getParties } from './party.actions';
 import { getCandidacy} from './user.actions';
+import { createOffice } from './office.actions';
 
 export { showModal,
         closeModal,
@@ -24,5 +25,6 @@ export { showModal,
         signinUser,
         createParty,
         getCandidacy,
-        getParties
+        getParties, 
+        createOffice
 };
