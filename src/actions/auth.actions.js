@@ -54,6 +54,7 @@ const signinUser = user => {
 
       const base64Url = token.split('.')[1];
       const decode = JSON.parse(window.atob(base64Url));
+      localStorage.setItem('isAdmin', decode.isAdmin);
       dispatch(signinSuccess(user, decode.isAdmin))
 
     })

@@ -1,6 +1,6 @@
 import party from '../constants/party.constants';
 
-const { CREATE_PARTY_BEGIN, CREATE_PARTY_SUCCESS, CREATE_PARTY_FAILURE } = party;
+const { CREATE_PARTY_BEGIN, CREATE_PARTY_SUCCESS, CREATE_PARTY_FAILURE, GET_PARTY_SUCCESS, GET_PARTY_FAILURE } = party;
 
 const initialState = {
   name: '',
@@ -8,11 +8,12 @@ const initialState = {
   hqAddress: '',
   errors: {},
   submit: false,
-  redirect: false
+  redirect: false,
+  getParties: []
 };
 
-const partyReducer = (state = initialState, action) => {
-  switch (action.type) {
+const partyReducer = (state = initialState, actions) => {
+  switch (actions.type) {
     case CREATE_PARTY_BEGIN:
       return {
         ...state,
@@ -22,15 +23,20 @@ const partyReducer = (state = initialState, action) => {
       return {
         ...state,
         submit: false,
-        party: action.payload.party,
+        party: actions.payload.party,
         redirect: true
       };
     case CREATE_PARTY_FAILURE:
       return {
         ...state,
         submit: false,
-        errors: action.payload.error,
+        errors: actions.payload.error,
         redirect: false
+      }
+    case GET_PARTY_SUCCESS:
+      return {
+        ...state,
+        getParties: actions.payload
       } 
     default:
       return state;
