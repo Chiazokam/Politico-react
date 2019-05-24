@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.min.css'; 
-import { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile, GetParties } from './containers';
+import { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile, GetParties, CreateOffice } from './containers';
 import { Logout, Back } from './components/global';
 import './styles/index.scss';
 
@@ -18,6 +18,7 @@ class App extends Component {
         <Route path="/admin/profile" render={ () => <AdminProfile />} />
         <Route path="/logout" render={ () => <Logout />} />
         <Route path="/parties/new" render={ () => <CreateParty />} />
+        <Route path="/offices/new" render={ () => <CreateOffice />} />
         <Route path="/parties" render={ () => <GetParties />} />
         <Route path="/back" render={ () => <Back />} />
       </BrowserRouter>

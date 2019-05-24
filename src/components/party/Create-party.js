@@ -45,7 +45,7 @@ class CreateParty extends Component {
 
   render() {
     const { errors, redirect } = this.props;
-    if (redirect) return <Redirect to='/view-parties'/>;
+    if (redirect) return <Redirect to='/parties'/>;
     
     return (
       <div className="create-party">
