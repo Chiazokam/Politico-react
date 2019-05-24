@@ -1,8 +1,8 @@
-import axios from 'axios';
+import axios from '../config/axiosConfig';
 import { Url } from '../components/global';
 import party from '../constants/party.constants';
 
-const { CREATE_PARTY_BEGIN, CREATE_PARTY_SUCCESS, CREATE_PARTY_FAILURE } = party;
+const { CREATE_PARTY_BEGIN, CREATE_PARTY_SUCCESS, CREATE_PARTY_FAILURE, GET_PARTY_SUCCESS } = party;
 
 const createPartyBegin = () => ({
   type: CREATE_PARTY_BEGIN
@@ -18,11 +18,23 @@ const createPartyFailure = error => ({
   payload: { error }
 });
 
+const getPartySuccess = data => ({
+  type: GET_PARTY_SUCCESS,
+  payload: data
+})
+
+
 const createParty = (party, config) => (dispatch) => {
   dispatch(createPartyBegin());
-  axios.post(`${Url.herokuUrl}/parties`, party, config)
+  axios.post('/parties', party, config)
   .then((response) => dispatch(createPartySuccess(response.data.data[0])))
   .catch((error) => dispatch(createPartyFailure(error.response.data.error)))
 }
 
-export { createParty };
+const getParties = config => (dispacth) => {
+  axios.get('/parties', config)
+  .then((response) => dispacth(getPartySuccess(response.data.data)))
+  .catch((error) => true)
+}
+
+export { createParty,getParties };

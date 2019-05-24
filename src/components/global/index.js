@@ -7,6 +7,8 @@ import PlainStrip from './PlainStrip';
 import Container from './Container';
 import FormField from './FormField';
 import Url from './helper';
-import Logout from './Logout'; 
+import Logout from './Logout';
+import Back from './Back';
+import Card from './Party-card';
 
-export { Header, Button, Footer, NavList, TextStrip, PlainStrip, Container, FormField, Url, Logout };
+export { Header, Button, Footer, NavList, TextStrip, PlainStrip, Container, FormField, Url, Logout, Back, Card };

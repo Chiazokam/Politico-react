@@ -13,6 +13,7 @@ class Logout extends Component {
     localStorage.removeItem('isCandidate');
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('isAdmin');
     this.setState({
       loggedOut: true
     });

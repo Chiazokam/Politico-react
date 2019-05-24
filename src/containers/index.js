@@ -5,6 +5,7 @@ import Login from './login/Layout';
 import CreateParty from './create-party/Layout';
 import UserProfile from './user-profile/Layout';
 import AdminProfile from './admin-profile/Layout'
+import GetParties from './get-parties/Layout';
 
 
-export { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile };
+export { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile, GetParties };

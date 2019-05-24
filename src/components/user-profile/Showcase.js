@@ -6,7 +6,7 @@ class Showcase extends Component {
       <div id="main-profile">
         <div className="flex-container">
           <div className="card">
-              <a href="#"><button type="button" className="btn btn-trans">View All Political Parties</button></a>
+              <a href="/parties"><button type="button" className="btn btn-trans">View All Political Parties</button></a>
           </div>  
           <div className="card">
               <a href="#"><button type="button" className="btn btn-trans">View Political Offices</button></a>
