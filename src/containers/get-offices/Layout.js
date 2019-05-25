@@ -1,15 +1,15 @@
 import React from 'react';
 import { Header, Footer, PlainStrip } from '../../components/global';
-import { GetParties } from '../../components/party';
+import { GetOffices } from '../../components/office';
 
 const Layout = (props) => {
   const navItems = ['logout'];
   return (
     <React.Fragment>
       <Header navItems={navItems}/>
-      <div id="view-party">
+      <div id="vote-office">
         <PlainStrip />
-        <GetParties auth={props}/>
+        <GetOffices auth={props}/>
       </div>
       <Footer />
     </React.Fragment>

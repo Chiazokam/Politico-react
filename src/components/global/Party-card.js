@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Card = (props) => (
+const PartyCard = (props) => (
   <div className="card-party">
     <div className="party-main">
         <p><span className="title-span">Party Name</span> {props.name}</p>
@@ -13,4 +13,4 @@ const Card = (props) => (
   </div> 
 )
 
-export default Card;
+export default PartyCard;

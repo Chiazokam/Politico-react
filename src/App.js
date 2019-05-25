@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.min.css'; 
-import { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile, GetParties, CreateOffice, AuthorizationHOC } from './containers';
+import { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile, GetParties, CreateOffice, AuthorizationHOC, GetOffices } from './containers';
 import { Logout, Back } from './components/global';
 import './styles/index.scss';
 
@@ -19,8 +19,9 @@ class App extends Component {
         <AuthorizationHOC path="/user/profile" component={UserProfile} />
         <AuthorizationHOC path="/admin/profile" component={AdminProfile} />
         <AuthorizationHOC path="/parties/new" component={CreateParty} />
-        <AuthorizationHOC path="/offices/new" component={CreateOffice} />} />
+        <AuthorizationHOC path="/offices/new" component={CreateOffice} />
         <AuthorizationHOC path="/parties" component={GetParties} />
+        <AuthorizationHOC path="/offices" component={GetOffices} />
         <Route path="/back" component={Back} />
       </BrowserRouter>
     )

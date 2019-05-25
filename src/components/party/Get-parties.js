@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Card } from '../global';
+import { PartyCard } from '../global';
 import { getParties } from '../../actions';
 
 class GetParties extends Component {
@@ -52,7 +52,7 @@ class GetParties extends Component {
         </div> }
 
         { getParties.map(party => 
-          <Card
+          <PartyCard
             key={Math.random(Date.now())}
             name={party.name}
             headquarters={party.hqaddress}

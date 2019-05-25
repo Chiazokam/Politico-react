@@ -10,9 +10,10 @@ import { signupBegin,
       } from './auth.actions';
 import { createParty, getParties } from './party.actions';
 import { getCandidacy} from './user.actions';
-import { createOffice } from './office.actions';
+import { createOffice, getOffices } from './office.actions';
 
-export { showModal,
+export { 
+        showModal,
         closeModal,
         signupBegin,
         signupSuccess,
@@ -26,5 +27,6 @@ export { showModal,
         createParty,
         getCandidacy,
         getParties, 
-        createOffice
+        createOffice,
+        getOffices
 };

@@ -3,7 +3,7 @@ import { Header, Footer, PlainStrip } from '../../components/global';
 import { CreateOffice } from '../../components/office';
 
 const Layout = () => {
-  const navItems = ['back', 'logout'];
+  const navItems = ['logout'];
   return (
     <React.Fragment>
       <Header navItems={navItems}/>

@@ -9,7 +9,7 @@ class Showcase extends Component {
               <a href="/parties"><button type="button" className="btn btn-trans">View All Political Parties</button></a>
           </div>  
           <div className="card">
-              <a href="#"><button type="button" className="btn btn-trans">View Political Offices</button></a>
+              <a href="/offices"><button type="button" className="btn btn-trans">View Political Offices</button></a>
           </div> 
           <div className="card">
               <a href="#"><button type="button" className="btn btn-trans">View All your Votes</button></a>

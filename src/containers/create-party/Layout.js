@@ -3,7 +3,7 @@ import { Header, Footer, PlainStrip } from '../../components/global';
 import { CreateParty } from '../../components/party';
 
 const Layout = () => {
-  const navItems = ['back', 'logout'];
+  const navItems = ['logout'];
   return (
     <React.Fragment>
       <Header navItems={navItems}/>

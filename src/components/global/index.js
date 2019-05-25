@@ -9,6 +9,21 @@ import FormField from './FormField';
 import Url from './helper';
 import Logout from './Logout';
 import Back from './Back';
-import Card from './Party-card';
+import PartyCard from './Party-card';
+import OfficeCard from './Office-card';
 
-export { Header, Button, Footer, NavList, TextStrip, PlainStrip, Container, FormField, Url, Logout, Back, Card };
+export {
+  Header,
+  Button,
+  Footer,
+  NavList,
+  TextStrip,
+  PlainStrip,
+  Container,
+  FormField,
+  Url,
+  Logout,
+  Back,
+  PartyCard,
+  OfficeCard
+};

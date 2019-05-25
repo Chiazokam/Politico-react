@@ -1,13 +1,14 @@
 import office from '../constants/office.constants';
 
-const { CREATE_OFFICE_BEGIN, CREATE_OFFICE_SUCCESS, CREATE_OFFICE_FAILURE } = office;
+const { CREATE_OFFICE_BEGIN, CREATE_OFFICE_SUCCESS, CREATE_OFFICE_FAILURE, GET_OFFICE_SUCCESS } = office;
 
 const initialState = {
   name: '',
   type: '',
   errors: {},
   submit: false,
-  redirect: false
+  redirect: false,
+  getOffices: []
 };
 
 const officeReducer = (state = initialState, actions) => {
@@ -30,6 +31,11 @@ const officeReducer = (state = initialState, actions) => {
         submit: false,
         errors: actions.payload.error,
         redirect: false
+      }
+    case GET_OFFICE_SUCCESS:
+      return {
+        ...state,
+        getOffices: actions.payload
       }
     default:
       return state;

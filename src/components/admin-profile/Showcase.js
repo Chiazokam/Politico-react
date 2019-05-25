@@ -15,7 +15,7 @@ class Showcase extends Component {
               <a href="/offices/new"><button type="button" className="btn btn-trans">Create a Political Office</button></a>
           </div> 
           <div className="card">
-              <a href="#"><button type="button" className="btn btn-trans">View Political Offices</button></a>
+              <a href="/offices"><button type="button" className="btn btn-trans">View Political Offices</button></a>
           </div> 
         </div>
       </div>
