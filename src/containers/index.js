@@ -7,6 +7,7 @@ import UserProfile from './user-profile/Layout';
 import AdminProfile from './admin-profile/Layout'
 import GetParties from './get-parties/Layout';
 import CreateOffice from './create-office/Layout';
+import AuthorizationHOC from './AuthorizationHOC';
 
 
 export {
@@ -18,5 +19,6 @@ export {
   UserProfile,
   AdminProfile,
   GetParties,
-  CreateOffice
+  CreateOffice,
+  AuthorizationHOC
 };
