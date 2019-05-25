@@ -2,14 +2,14 @@ import React from 'react';
 import { Header, Footer, PlainStrip } from '../../components/global';
 import { GetParties } from '../../components/party';
 
-const Layout = () => {
+const Layout = (props) => {
   const navItems = ['back', 'logout'];
   return (
     <React.Fragment>
       <Header navItems={navItems}/>
       <div id="view-party">
         <PlainStrip />
-        <GetParties />
+        <GetParties auth={props}/>
       </div>
       <Footer />
     </React.Fragment>

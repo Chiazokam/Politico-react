@@ -4,6 +4,9 @@ import { Card } from '../global';
 import { getParties } from '../../actions';
 
 class GetParties extends Component {
+  constructor(props){
+    super(props);
+  }
   componentDidMount() {
     this.getParties();
   }
@@ -65,7 +68,6 @@ class GetParties extends Component {
 
 const mapStateToProps = state => ({
   getParties: state.party.getParties,
-  isAdmin: state.auth.isAdmin,
 });
 
 export default connect(mapStateToProps)(GetParties);
