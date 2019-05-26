@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import 'react-toastify/dist/ReactToastify.min.css'; 
-import { Home, About, Signup, Login, CreateParty, UserProfile, AdminProfile, GetParties, CreateOffice, AuthorizationHOC, GetOffices } from './containers';
-import { Logout, Back } from './components/global';
+import {
+  Home,
+  About,
+  Signup,
+  Login,
+  CreateParty,
+  UserProfile,
+  AdminProfile,
+  GetParties,
+  CreateOffice,
+  AuthorizationHOC,
+  GetOffices,
+  BecomeCandidate
+} from './containers';
+import { Logout } from './components/global';
 import './styles/index.scss';
 
 class App extends Component {
@@ -16,13 +28,13 @@ class App extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/logout" component={Logout} />
-        <AuthorizationHOC path="/user/profile" component={UserProfile} />
-        <AuthorizationHOC path="/admin/profile" component={AdminProfile} />
+        <Route path="/user/profile" component={UserProfile} />
+        <Route path="/admin/profile" component={AdminProfile} />
         <AuthorizationHOC path="/parties/new" component={CreateParty} />
         <AuthorizationHOC path="/offices/new" component={CreateOffice} />
         <AuthorizationHOC path="/parties" component={GetParties} />
         <AuthorizationHOC path="/offices" component={GetOffices} />
-        <Route path="/back" component={Back} />
+        <AuthorizationHOC path="/run for an office" component={BecomeCandidate} />
       </BrowserRouter>
     )
   }

@@ -12,7 +12,7 @@ const userSignUp = {
 
 const initialState = {
   signupErrors: {},
-  redirect: false,
+  signupRedirect: false,
   submit: false,
   isAdmin: false
 };
@@ -29,7 +29,8 @@ describe('authReducer', () => {
       password: '',
       signupErrors: {},
       loginErrors: {},
-      redirect: false,
+      signupRedirect: false,
+      signinRedirect: false,
       submit: false,
       isAdmin: false
     });
@@ -48,7 +49,7 @@ describe('authReducer', () => {
       type: 'SIGNUP_SUCCESS'
     })).toEqual({
       ...initialState,
-      redirect: true,
+      signupRedirect: true,
       submit: false
     });
   });
@@ -58,7 +59,7 @@ describe('authReducer', () => {
       payload: { error: {response: { data: 'Some error occurred' }}}
     })).toEqual({
       ...initialState,
-      redirect: false,
+      signupRedirect: false,
       signupErrors: undefined,
     });
   });

@@ -12,9 +12,9 @@ class Layout extends Component {
     };
   }
 
-  componentWillMount() {
-    this.getCandidacy();
-    this.updateNavItems();
+  componentDidMount() {
+    {this.updateNavItems()}
+    {this.getCandidacy()}
   }
 
   getCandidacy = () => {
