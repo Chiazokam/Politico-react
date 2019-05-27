@@ -9,6 +9,7 @@ import GetParties from './get-parties/Layout';
 import CreateOffice from './create-office/Layout';
 import GetOffices from './get-offices/Layout';
 import AuthorizationHOC from './AuthorizationHOC';
+import BecomeCandidate from './candidate/becomeCandidate';
 
 
 export {
@@ -22,5 +23,6 @@ export {
   GetParties,
   CreateOffice,
   AuthorizationHOC,
-  GetOffices
+  GetOffices,
+  BecomeCandidate
 };

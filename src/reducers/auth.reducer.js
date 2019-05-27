@@ -12,7 +12,8 @@ const initialState = {
   password: '',
   signupErrors: {},
   loginErrors: {},
-  redirect: false,
+  signupRedirect: false,
+  signinRedirect: false,
   submit: false,
   isAdmin: false
 };
@@ -29,7 +30,7 @@ const authReducer = (state = initialState, action) => {
     case SIGNUP_SUCCESS:
       return {
         ...state,
-        redirect: true,
+        signupRedirect: true,
         submit: false,
     }
     
@@ -50,7 +51,7 @@ const authReducer = (state = initialState, action) => {
     case SIGNIN_SUCCESS:
       return {
         ...state,
-        redirect: true,
+        signinRedirect: true,
         submit: false,
         user: action.payload.user,
         isAdmin: action.payload.decode

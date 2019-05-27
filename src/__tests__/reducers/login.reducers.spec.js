@@ -7,7 +7,8 @@ const userLogin = {
 
 const initialState = {
   loginErrors: {},
-  redirect: false,
+  signupRedirect: false,
+  signinRedirect: false,
   submit: false,
   isAdmin: false
 };
@@ -24,7 +25,8 @@ describe('authReducer', () => {
       password: '',
       signupErrors: {},
       loginErrors: {},
-      redirect: false,
+      signupRedirect: false,
+      signinRedirect: false,
       submit: false,
       isAdmin: false
     });
@@ -44,7 +46,7 @@ describe('authReducer', () => {
       payload: { userLogin }
     })).toEqual({
       ...initialState,
-      redirect: true,
+      signinRedirect: true,
       submit: false,
       user: undefined,
       isAdmin: undefined
@@ -56,7 +58,7 @@ describe('authReducer', () => {
       payload: { error: { data: 'Some error occurred' }}
     })).toEqual({
       ...initialState,
-      redirect: false,
+      signinRedirect: false,
       loginErrors: undefined,
     });
   });

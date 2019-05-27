@@ -137,7 +137,7 @@ const mapStateToProps = state => {
   return {
     submit: state.auth.submit,
     errors: state.auth.signupErrors,
-    redirect: state.auth.redirect,
+    redirect: state.auth.signupRedirect,
     firstname: state.auth.firstname,
     lastname: state.auth.lastname,
     othername: state.auth.othername,

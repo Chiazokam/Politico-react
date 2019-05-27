@@ -103,7 +103,7 @@ const mapStateToProps = state => {
     isModalOpen: state.global.isModalOpen,
     submit: state.auth.submit,
     errors: state.auth.loginErrors,
-    redirect: state.auth.redirect,
+    redirect: state.auth.signinRedirect,
     email: state.auth.email,
     password: state.auth.password,
     isAdmin: state.auth.isAdmin

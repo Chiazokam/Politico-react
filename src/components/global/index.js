@@ -11,6 +11,7 @@ import Logout from './Logout';
 import Back from './Back';
 import PartyCard from './Party-card';
 import OfficeCard from './Office-card';
+import ToastMessage from './ToastMessage';
 
 export {
   Header,
@@ -25,5 +26,6 @@ export {
   Logout,
   Back,
   PartyCard,
-  OfficeCard
+  OfficeCard,
+  ToastMessage
 };

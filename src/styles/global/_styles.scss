@@ -7,6 +7,10 @@ body{
   background-color: #f5f6fa;
 }
 
+.toast-message {
+  text-align: center;
+}
+
 #divError{
   color: #99173C;
   font-size: 14px;
@@ -680,7 +684,7 @@ form p:hover{
 
 .office-vote-flex{
   display: flex;
-}
+}e
 
 .candidate-party{
   flex: 2;
@@ -750,6 +754,24 @@ form p:hover{
 .form-field .petition-textarea{
   min-width: 90%;
 }
+
+.interest{
+  border-radius: 4px;
+  width: 45%;
+  height: auto;
+  text-align: left;
+  border: 1px solid #2E2633;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  background-color: #2E2633;
+  color: #DCE9BE;
+  margin: 7rem auto;
+
+  p {
+    font-size: 34px;
+    text-align: center;
+  }
+ }
+
 
 /*---------------------------RESULTS---------------------------------*/
 
