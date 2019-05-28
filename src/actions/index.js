@@ -11,7 +11,7 @@ import { signupBegin,
 import { createParty, getParties } from './party.actions';
 import { getCandidacy } from './user.actions';
 import { createOffice, getOffices } from './office.actions';
-import { indicateInterest } from './candidate.actions';
+import { indicateInterest, getCandidatesRequest, createCandidate, clearErrors } from './candidate.actions';
 
 export { 
         showModal,
@@ -30,5 +30,8 @@ export {
         getParties, 
         createOffice,
         getOffices,
-        indicateInterest
+        indicateInterest,
+        getCandidatesRequest,
+        createCandidate,
+        clearErrors
 };

@@ -50,7 +50,7 @@ class BecomeCandidate extends Component {
   render() {
     const { getOffices, getParties, submit, redirect, errors } = this.props;
     if (redirect) {
-      toast(<ToastMessage message={'Successfully declared interest. Redirecting...'} />, {
+      toast(<ToastMessage message={'Successfully declared interest'} />, {
         type: 'success',
         closeButton: false,
         hideProgressBar: true,
