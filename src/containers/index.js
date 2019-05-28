@@ -10,6 +10,7 @@ import CreateOffice from './create-office/Layout';
 import GetOffices from './get-offices/Layout';
 import AuthorizationHOC from './AuthorizationHOC';
 import BecomeCandidate from './candidate/becomeCandidate';
+import CreateCandidate from './candidate/createCandidate';
 
 
 export {
@@ -24,5 +25,6 @@ export {
   CreateOffice,
   AuthorizationHOC,
   GetOffices,
-  BecomeCandidate
+  BecomeCandidate,
+  CreateCandidate
 };

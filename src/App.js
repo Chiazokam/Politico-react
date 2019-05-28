@@ -12,7 +12,8 @@ import {
   CreateOffice,
   AuthorizationHOC,
   GetOffices,
-  BecomeCandidate
+  BecomeCandidate,
+  CreateCandidate
 } from './containers';
 import { Logout } from './components/global';
 import './styles/index.scss';
@@ -35,6 +36,7 @@ class App extends Component {
         <AuthorizationHOC path="/parties" component={GetParties} />
         <AuthorizationHOC path="/offices" component={GetOffices} />
         <AuthorizationHOC path="/run for an office" component={BecomeCandidate} />
+        <AuthorizationHOC path="/create a candidate" component={CreateCandidate} />
       </BrowserRouter>
     )
   }
