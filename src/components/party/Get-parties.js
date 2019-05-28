@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { PartyCard } from '../global';
 import { getParties } from '../../actions';
+import { getAdminStatus } from '../../utils';
 
 class GetParties extends Component {
   constructor(props){
@@ -13,16 +14,12 @@ class GetParties extends Component {
 
   getParties = () => {
     const { dispatch } = this.props;
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
-    dispatch(getParties(config));
+    dispatch(getParties());
   }
 
   render() {
     const { getParties } = this.props;
-    const isAdmin = localStorage.getItem('isAdmin');
+    const isAdmin = getAdminStatus();
     let editButton, deleteButton;
     if(isAdmin === 'true') {
       editButton =  <a className="edit">Edit Name</a>

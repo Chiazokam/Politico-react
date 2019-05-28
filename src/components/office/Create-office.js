@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Container, FormField, Button } from '../global';
 import '../../styles/create-party/create-party.scss';
-import { createOffice } from '../../actions';
+import { createOffice, getOffices } from '../../actions';
  
 class CreateOffice extends Component {
   constructor(props) {
@@ -22,20 +22,13 @@ class CreateOffice extends Component {
       name: this.state.name,
       type: this.state.type
     }
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
    const { dispatch } = this.props;
-   dispatch(createOffice(office, config));
+   dispatch(createOffice(office));
+   dispatch(getOffices());
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
-  }
-
-  clearField = () => {
-
   }
 
   render() {

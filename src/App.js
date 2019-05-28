@@ -28,8 +28,8 @@ class App extends Component {
         <Route path="/signup" component={Signup} />
         <Route path="/login" component={Login} />
         <Route path="/logout" component={Logout} />
-        <Route path="/user/profile" component={UserProfile} />
-        <Route path="/admin/profile" component={AdminProfile} />
+        <AuthorizationHOC path="/user/profile" component={UserProfile} />
+        <AuthorizationHOC path="/admin/profile" component={AdminProfile} />
         <AuthorizationHOC path="/parties/new" component={CreateParty} />
         <AuthorizationHOC path="/offices/new" component={CreateOffice} />
         <AuthorizationHOC path="/parties" component={GetParties} />

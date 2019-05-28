@@ -23,15 +23,15 @@ const getPartySuccess = data => ({
 })
 
 
-const createParty = (party, config) => (dispatch) => {
+const createParty = (party) => (dispatch) => {
   dispatch(createPartyBegin());
-  axios.post('/parties', party, config)
+  axios.post('/parties', party)
   .then((response) => dispatch(createPartySuccess(response.data.data[0])))
   .catch((error) => dispatch(createPartyFailure(error.response.data.error)))
 }
 
-const getParties = config => (dispacth) => {
-  axios.get('/parties', config)
+const getParties = () => (dispacth) => {
+  axios.get('/parties')
   .then((response) => dispacth(getPartySuccess(response.data.data)))
   .catch((error) => true)
 }

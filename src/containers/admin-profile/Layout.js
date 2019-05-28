@@ -15,6 +15,7 @@ class Layout extends Component {
     <React.Fragment>
       <Header navItems={this.state.navItems}/>
       <PlainStrip />
+      <h2 className='user-profile-text'>Perform Admin Activities</h2>
       <Showcase />
       <Footer />
     </React.Fragment>

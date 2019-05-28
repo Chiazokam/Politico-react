@@ -27,15 +27,15 @@ const getOfficeSuccess = data => ({
   payload: data
 });
 
-const createOffice = (office, config) => (dispatch) => {
+const createOffice = (office) => (dispatch) => {
   dispatch(createOfficeBegin());
-  axios.post('/offices', office, config)
+  axios.post('/offices', office)
   .then((response) => dispatch(createOfficeSuccess(response.data.data[0])))
   .catch((error) => dispatch(createOfficeFailure(error.response.data.error)))
 }
 
-const getOffices = (config) => (dispatch) => {   
-  axios.get('/offices', config)
+const getOffices = () => (dispatch) => {   
+  axios.get('/offices')
   .then((response) => dispatch(getOfficeSuccess(response.data.data)))
   .catch((error) => true)
 }

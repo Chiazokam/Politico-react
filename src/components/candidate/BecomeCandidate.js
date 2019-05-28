@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Container, Button, ToastMessage } from '../global';
 import { getOffices, getParties, indicateInterest } from '../../actions';
+import { getUser } from '../../utils';
 import '../../styles/create-party/create-party.scss';
 
 class BecomeCandidate extends Component {
@@ -25,34 +25,22 @@ class BecomeCandidate extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = getUser()
     const userId = String(user.id);
     const candidate = {
       party: this.state.party,
       office: this.state.office,
       userId,
     };
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
-    this.props.dispatch(indicateInterest(candidate, config));
+    this.props.dispatch(indicateInterest(candidate));
   }
 
   getOffices = () => {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
-    this.props.dispatch(getOffices(config));
+    this.props.dispatch(getOffices());
   }
   
   getParties = () => {
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
-    this.props.dispatch(getParties(config));
+    this.props.dispatch(getParties());
   }
 
   handleChange = (e) => {
