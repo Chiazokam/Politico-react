@@ -10,11 +10,7 @@ class GetOffices extends Component {
 
   getOffices = () => {
     const { dispatch } = this.props;
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
-    dispatch(getOffices(config));
+    dispatch(getOffices());
   }
 
   render() {

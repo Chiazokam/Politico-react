@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Container, FormField, Url, Button } from '../global';
-import { createParty } from '../../actions';
+import { createParty, getParties } from '../../actions';
 import '../../styles/create-party/create-party.scss';
 
 class CreateParty extends Component {
@@ -28,11 +28,8 @@ class CreateParty extends Component {
       logoUrl: this.state.logoUrl,
       hqAddress: this.state.hqAddress
     };
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
-   this.props.dispatch(createParty(party, config));
+   this.props.dispatch(createParty(party));
+   this.props.dispatch(getParties());
   }
 
   handleChange = (e) => {

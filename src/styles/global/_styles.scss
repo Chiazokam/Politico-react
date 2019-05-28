@@ -100,7 +100,7 @@ header a{
 }
 
 /*ShowCase*/
-#showcase{
+#showcase {
   background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
   background-repeat: no-repeat;
   background-size: cover;
@@ -432,10 +432,9 @@ form p:hover{
   margin: 0 0 0 0;
 }
 /*---------------------------USER PROFILE PAGE------------------------------*/
-#main-profile, .main-admin-profile{
-  height: auto;
+#main-profile {
   text-align: center;
-  margin: 10% 80px; 
+  margin: 3% 80px; 
   color: #DCE9BE;
  }
 
@@ -443,33 +442,8 @@ form p:hover{
   cursor: pointer;
 }
 
-#main-profile, .main-admin-profile{
+#main-profile {
   height: 58vh;
-}
-
-.flex-container{
-  display: flex;
-  height: 100%;
-}
-.card{
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80);
-  background-position: center;
-  background-color: #2E2633;
-  height: 90%;
-  width: 30%;
-  margin: 20px 20px 20px 20px;
-  border-radius: 3px;
-  transition: transform 0.2s, opacity 0.2s;
-}
-
-.card:hover{
-  transform: scale(1.10);
-  opacity: 1;
-}
-
-.card .btn{
-  margin: 50% auto;
-  color: #DCE9BE;
 }
 
 /*---------------------------USER PARTIES---------------------------------*/
