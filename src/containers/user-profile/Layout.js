@@ -26,7 +26,7 @@ class UserLayout extends Component {
 
   updateNavItems = () => {
     const isUserCandidate = isCandidate();
-    if(isUserCandidate === 'true') {
+    if(isUserCandidate === true) {
       this.setState({
         navItems: ['vote', 'run for an office', 'create petition', 'logout']
       });
