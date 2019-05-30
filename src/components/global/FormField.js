@@ -11,7 +11,7 @@ const FormField = props => {
         value={props.value}
         id={props.id}
         onFocus={(e) => props.onFocus(e)}
-        placeholder={props.placeholder}>
+        placeholder={props.placeholder} required>
       </input>
     </div>
   )

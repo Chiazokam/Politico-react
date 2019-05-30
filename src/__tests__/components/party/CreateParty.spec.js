@@ -1,4 +1,5 @@
 import React from 'react';
+import "@babel/polyfill";
 import { shallow } from 'enzyme';
 import { CreatePartyUnit } from '../../../components/party/Create-party';
 

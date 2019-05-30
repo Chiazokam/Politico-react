@@ -7,7 +7,8 @@ import '../../styles/signup/signup.scss';
 import '../../styles/global/form.scss';
 import '../../styles/global/container.scss';
 import { Container, FormField, Button } from '../global';
-import { signupUser, clearField } from '../../actions'
+import { signupUser, clearField } from '../../actions';
+import { validateImage, uploadImage } from '../../utils';
 
 
 class SignupShowcase extends Component {
@@ -16,21 +17,49 @@ class SignupShowcase extends Component {
     this.state = {
       redirect: false,
       submit: false,
-      signupDetails: {}
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+      othername: '',
+      phone: '',
+      passportUrl: {},
+      error: ''
     };
   }
 
-  handleSubmit = (e) => {
-   e.preventDefault();
-    const { signupDetails } = this.state;
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const { firstname, lastname, othername, phone, email, password, passportUrl} = this.state;
     const { signupUser } = this.props;
-    signupUser(signupDetails);
+    const form = new FormData();
+    const isImageValid = validateImage(passportUrl);
+    if (isImageValid.valid) {
+      form.append('file', passportUrl);
+      const response = await uploadImage(form);
+      const user = {
+        firstname,
+        lastname,
+        othername,
+        phone,
+        email,
+        password,
+        passportUrl: response.url
+      }
+      signupUser(user);
+    } else {
+      this.setState({ error: isImageValid.message })
+    } 
   }
 
   handleChange = (e) => {
-    const { signupDetails } = this.state;
-    signupDetails[e.target.name] = e.target.value;
-    this.setState({ signupDetails })
+    this.setState({ [e.target.name]: e.target.value})
+  }
+
+  handleFileChange = (e) => {
+    this.setState({
+      passportUrl: e.target.files[0]
+    })
   }
 
   clearField = (e) => {
@@ -48,15 +77,15 @@ class SignupShowcase extends Component {
 
           <p className="form-text">Sign Up</p>
           <p className='form-info'>All fields are compulsory</p>
-          <form onSubmit={this.handleSubmit.bind(this)}>
-          { this.props.isOpen && this.handleErrors}
+          <form onSubmit={this.handleSubmit}>
+          <div className="error">{this.state.error}</div>
             <FormField 
               className="form-field" 
               error={this.props.errors.firstname}
               type="text"
               name="firstname"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.clearField.bind(this)}
+              onChange={this.handleChange}
+              onFocus={this.clearField}
               value={this.state.firstname} 
               placeholder="First Name"/>
 
@@ -65,8 +94,8 @@ class SignupShowcase extends Component {
               error={this.props.errors.lastname}
               type="text"
               name="lastname"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.clearField.bind(this)}
+              onChange={this.handleChange}
+              onFocus={this.clearField}
               value={this.state.lastname} 
               placeholder="Last Name"/>
 
@@ -75,8 +104,8 @@ class SignupShowcase extends Component {
               error={this.props.errors.othername}
               type="text"
               name="othername"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.clearField.bind(this)}
+              onChange={this.handleChange}
+              onFocus={this.clearField}
               value={this.state.othername} 
               placeholder="Other Name"/>
           
@@ -85,8 +114,8 @@ class SignupShowcase extends Component {
               error={this.props.errors.email}
               type="text"
               name="email"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.clearField.bind(this)}
+              onChange={this.handleChange}
+              onFocus={this.clearField}
               value={this.state.email} 
               placeholder="Email Address"/>
 
@@ -95,30 +124,31 @@ class SignupShowcase extends Component {
               error={this.props.errors.phone}
               type="text"
               name="phone"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.clearField.bind(this)}
+              onChange={this.handleChange}
+              onFocus={this.clearField}
               value={this.state.phone} 
               placeholder="Phone Number"/>
-
-            <FormField
-              className="form-field"
-              error={this.props.errors.passportUrl}
-              type="text"
-              name="passportUrl"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.clearField.bind(this)}
-              value={this.state.passportUrl} 
-              placeholder="Passport Url"/>
-
+            
             <FormField
               className="form-field"
               error={this.props.errors.password}
               type="password"
               name="password"
-              onChange={this.handleChange.bind(this)}
-              onFocus={this.clearField.bind(this)}
+              onChange={this.handleChange}
+              onFocus={this.clearField}
               value={this.state.password} 
-              placeholder="Password"/>
+              placeholder="Password"
+            />
+
+            <p className='file-input-text'>Upload a passport</p>
+            <FormField
+              className="form-field"
+              error={this.props.errors.passportUrl}
+              type="file"
+              name="passportUrl"
+              onChange={this.handleFileChange}
+              onFocus={this.clearField}
+              placeholder="Passport Url"/>
                                             
             <Button
               className="btn btn-colored btn-signup btn-dark">
