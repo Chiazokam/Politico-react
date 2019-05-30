@@ -10,7 +10,7 @@ import { Container, FormField, Button } from '../global';
 import { signupUser, clearField } from '../../actions'
 
 
-class Showcase extends Component {
+class SignupShowcase extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -156,4 +156,6 @@ const mapStateToProps = state => {
    };
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Showcase);
+const Showcase = connect(mapStateToProps, mapDispatchToProps)(SignupShowcase);
+
+export { Showcase, SignupShowcase };

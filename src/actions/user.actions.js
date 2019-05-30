@@ -16,9 +16,9 @@ const getCandidacyFailure = () => ({
   payload: false
 });
 
-const getCandidacy = (id, config) => async (dispatch) => {
+const getCandidacy = (id) => async (dispatch) => {
   try {
-    const response = await axios.get(`/candidates/${id}/user`, config);
+    const response = await axios.get(`/candidates/${id}/user`);
     dispatch(getCandidacySuccess(response.data.data.candidate));
     localStorage.setItem('isCandidate', response.data.data.candidate)
   } catch (error) {

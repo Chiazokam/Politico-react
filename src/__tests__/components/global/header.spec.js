@@ -13,5 +13,12 @@ describe('<Header />', () => {
   it('should render the Header component', () => {
     expect(component.contains(<Container />));
     expect(component.find('div')).toHaveLength(5);
-  })
+  });
+
+  it('correctly sets state when email is valid', () => {
+    const input = component.find('.menu-ham');
+    
+    input.simulate('click');
+    expect(component.state().isOpen).toEqual(true);
+  });
 })

@@ -7,7 +7,7 @@ import { Container, Button, ToastMessage } from '../global';
 import { getCandidatesRequest, createCandidate, clearErrors } from '../../actions';
 import '../../styles/create-party/create-party.scss';
 
-class CreateCandidate extends Component {
+class CreateCandidateUnit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,21 +34,23 @@ class CreateCandidate extends Component {
     if (candidate.party === '' || candidate.office === '' || userid === '') {
       this.setState({ error: 'Field cannot be empty' })
     } else {
-      this.props.dispatch(createCandidate(candidate, userid));
+      const { createCandidate } = this.props;
+      createCandidate(candidate, userid);
     }
   }
 
   getCandidates = () => {
-    this.props.dispatch(getCandidatesRequest());
+    const { getCandidatesRequest } = this.props;
+    getCandidatesRequest();
   }
 
   handleChange = (e) => {
-    const { candidates, dispatch } = this.props;
+    const { candidates, clearErrors } = this.props;
     this.setState({ 
       [e.target.name]: e.target.value,
       error: ''  
     });
-    dispatch(clearErrors());
+    clearErrors();
     const userid = parseInt(e.target.value)
     var data = candidates.filter(candidate => {
       return candidate.userid === userid
@@ -108,6 +110,12 @@ class CreateCandidate extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  createCandidate,
+  getCandidatesRequest,
+  clearErrors
+};
+
 const mapStateToProps = state => ({
   candidates: state.candidate.candidates,
   errors: state.candidate.candidateErrors,
@@ -115,4 +123,6 @@ const mapStateToProps = state => ({
   redirect: state.candidate.candidateRedirect
 });
 
-export default connect(mapStateToProps)(CreateCandidate);
+const CreateCandidate = connect(mapStateToProps, mapDispatchToProps)(CreateCandidateUnit);
+
+export { CreateCandidate, CreateCandidateUnit };

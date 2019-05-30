@@ -7,7 +7,7 @@ module.exports = {
 
   moduleFileExtensions: ['js', 'json', 'jsx'],
 
-  setupFiles: ['<rootDir>/enzyme.config.js'],
+  setupFiles: ['<rootDir>/enzyme.config.js', 'jest-localstorage-mock'],
 
   testEnvironment: 'jsdom',
 

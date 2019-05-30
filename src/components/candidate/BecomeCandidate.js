@@ -8,7 +8,7 @@ import { getOffices, getParties, indicateInterest } from '../../actions';
 import { getUser } from '../../utils';
 import '../../styles/create-party/create-party.scss';
 
-class BecomeCandidate extends Component {
+class BecomeCandidateUnit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,15 +32,18 @@ class BecomeCandidate extends Component {
       office: this.state.office,
       userId,
     };
-    this.props.dispatch(indicateInterest(candidate));
+    const { indicateInterest } = this.props;
+    indicateInterest(candidate);
   }
 
   getOffices = () => {
-    this.props.dispatch(getOffices());
+    const { offices } = this.props;
+    offices();
   }
   
   getParties = () => {
-    this.props.dispatch(getParties());
+    const { parties } = this.props;
+    parties();
   }
 
   handleChange = (e) => {
@@ -99,6 +102,12 @@ class BecomeCandidate extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  indicateInterest,
+  offices: getOffices,
+  parties: getParties
+};
+
 const mapStateToProps = state => ({
   getOffices: state.office.getOffices,
   getParties: state.party.getParties,
@@ -107,4 +116,6 @@ const mapStateToProps = state => ({
   errors: state.candidate.errors
 });
 
-export default connect(mapStateToProps)(BecomeCandidate);
+const BecomeCandidate = connect(mapStateToProps, mapDispatchToProps)(BecomeCandidateUnit);
+
+export { BecomeCandidate, BecomeCandidateUnit}

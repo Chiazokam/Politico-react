@@ -9,7 +9,7 @@ import { showModal, closeModal } from '../../actions';
 import '../../styles/login/login.scss';
 import { signinUser } from '../../actions';
 
-class Showcase extends Component {
+class LoginShowcase extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,5 +119,6 @@ const mapStateToProps = state => {
    };
   }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Showcase);
+const Showcase = connect(mapStateToProps, mapDispatchToProps)(LoginShowcase);
  
+export { Showcase, LoginShowcase }
