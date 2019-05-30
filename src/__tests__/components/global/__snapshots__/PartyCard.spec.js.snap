@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Party Card should render Party Card Container correctly 1`] = `ShallowWrapper {}`;

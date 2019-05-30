@@ -39,7 +39,7 @@ const candidateReducer = (state = initialState, actions) => {
       return {
         ...state,
         submit: false,
-        errors: actions.payload,
+        errors: actions.payload.data.error,
         redirect: false
       }
     case GET_CANDIDATES:
@@ -75,4 +75,4 @@ const candidateReducer = (state = initialState, actions) => {
   }
 }
 
-export { candidateReducer };
+export { candidateReducer, initialState };

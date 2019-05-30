@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { Container, FormField, Url, Button } from '../global';
+import { Container, FormField, Button } from '../global';
 import { createParty, getParties } from '../../actions';
 import '../../styles/create-party/create-party.scss';
 
@@ -28,8 +28,9 @@ class CreateParty extends Component {
       logoUrl: this.state.logoUrl,
       hqAddress: this.state.hqAddress
     };
-   this.props.dispatch(createParty(party));
-   this.props.dispatch(getParties());
+    const { parties, createParty } = this.props;
+    createParty(party);
+    parties();
   }
 
   handleChange = (e) => {
@@ -100,6 +101,11 @@ class CreateParty extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  parties: getParties,
+  createParty,
+};
+
 const mapStateToProps = state => ({
   name: state.party.name,
   logoUrl: state.party.logoUrl,
@@ -109,4 +115,4 @@ const mapStateToProps = state => ({
   redirect: state.party.redirect
 });
 
-export default connect(mapStateToProps)(CreateParty);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateParty);

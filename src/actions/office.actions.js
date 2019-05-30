@@ -12,32 +12,45 @@ const createOfficeBegin = () => ({
   type: CREATE_OFFICE_BEGIN
 });
 
-const createOfficeSuccess = office => ({
+const createOfficeSuccess = (office = {}) => ({
   type: CREATE_OFFICE_SUCCESS,
   payload: office
 });
 
-const createOfficeFailure = error => ({
+const createOfficeFailure = (error = {})=> ({
   type: CREATE_OFFICE_FAILURE,
   payload: error
 });
 
-const getOfficeSuccess = data => ({
+const getOfficeSuccess = (data = {}) => ({
   type: GET_OFFICE_SUCCESS,
   payload: data
 });
 
-const createOffice = (office) => (dispatch) => {
-  dispatch(createOfficeBegin());
-  axios.post('/offices', office)
-  .then((response) => dispatch(createOfficeSuccess(response.data.data[0])))
-  .catch((error) => dispatch(createOfficeFailure(error.response.data.error)))
+const createOffice = (office) => async (dispatch) => {
+  try {
+    dispatch(createOfficeBegin());
+    const response = await axios.post('/offices', office)
+    dispatch(createOfficeSuccess(response.data.data[0]))
+  } catch (error) {
+    dispatch(createOfficeFailure(error.response.data.error))
+    }
 }
 
-const getOffices = () => (dispatch) => {   
-  axios.get('/offices')
-  .then((response) => dispatch(getOfficeSuccess(response.data.data)))
-  .catch((error) => true)
+const getOffices = () => async (dispatch) => {
+  try {
+    const response = await axios.get('/offices');
+    dispatch(getOfficeSuccess(response.data.data))
+  } catch(error) {
+    return true;
+  }
 }
 
-export { createOffice, getOffices }
+export {
+  createOffice,
+  getOffices,
+  createOfficeBegin,
+  createOfficeSuccess,
+  createOfficeFailure,
+  getOfficeSuccess
+}

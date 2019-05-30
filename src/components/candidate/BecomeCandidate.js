@@ -59,7 +59,7 @@ class BecomeCandidate extends Component {
     }
     
     return (
-      <div className="interest">
+      <div className="interest"> 
         <Container>
           <p className="form-text">Declare Interest</p>
             <form onSubmit={this.handleSubmit}>

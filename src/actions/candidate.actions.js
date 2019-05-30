@@ -16,17 +16,17 @@ const indicateInterestBegin = () => ({
   type: INDICATE_INTEREST_BEGIN
 });
 
-const indicateInterestSuccess = candidate => ({
+const indicateInterestSuccess = (candidate = {}) => ({
   type: INDICATE_INTEREST_SUCCESS,
   payload: candidate
 });
 
-const indicateInterestFailure = error => ({
+const indicateInterestFailure = (error = {}) => ({
   type: INDICATE_INTEREST_FAILURE,
   payload: error
 });
 
-const getCandidates = candidates => ({
+const getCandidates = (candidates = [])=> ({
   type: GET_CANDIDATES,
   payload: candidates
 });
@@ -35,12 +35,12 @@ const createCandidateBegin = () => ({
   type: CREATE_CANDIDATE_BEGIN
 })
 
-const createCandidateSuccess = (candidate) => ({
+const createCandidateSuccess = (candidate = {}) => ({
   type: CREATE_CANDIDATE_SUCCESS,
   payload: candidate
 })
 
-const createCandidateFailure = (error) => ({
+const createCandidateFailure = (error = {}) => ({
   type: CREATE_CANDIDATE_FAILURE,
   payload: error
 })
@@ -49,24 +49,45 @@ const clearErrors = () => ({
   type: CLEAR_ERRORS
 })
 
-const indicateInterest = (candidate) => (dispatch) => {
-  dispatch(indicateInterestBegin());
-  axios.post('/interests', candidate)
-  .then((response) => dispatch(indicateInterestSuccess(response.data.data[0])))
-  .catch((error) => dispatch(indicateInterestFailure(error.response.data.error)))
+const indicateInterest = (candidate) => async (dispatch) => {
+  try {
+    dispatch(indicateInterestBegin());
+    const response = await axios.post('/interests', candidate);
+    dispatch(indicateInterestSuccess(response.data.data[0]))
+  } catch (error) {
+    dispatch(indicateInterestFailure(error.response))
+    }
 }
 
-const getCandidatesRequest = () => (dispatch) => {
-  axios.get('/interests')
-  .then((response) => dispatch(getCandidates(response.data.data)))
-  .catch((error) => true)
+const getCandidatesRequest = () => async (dispatch) => {
+  try {
+    const response = await axios.get('/interests');
+    dispatch(getCandidates(response.data.data));
+  } catch(error) {
+    return true;
+  }
 }
 
-const createCandidate = (candidate, id) => (dispatch) => {
-  dispatch(createCandidateBegin());
-  axios.post(`/offices/${id}/register`, candidate)
-  .then((response) => dispatch(createCandidateSuccess(response.data.data[0])))
-  .catch((error) => dispatch(createCandidateFailure(error.response.data.error)))
+const createCandidate = (candidate, id) => async (dispatch) => {
+  try {
+    dispatch(createCandidateBegin());
+    const response = await axios.post(`/offices/${id}/register`, candidate);
+    dispatch(createCandidateSuccess(response.data.data[0]))
+  } catch (error) {
+    dispatch(createCandidateFailure(error.response.data.error))
+    }
 }
 
-export { indicateInterest, getCandidatesRequest, createCandidate, clearErrors };
+export {
+  indicateInterest,
+  getCandidatesRequest,
+  createCandidate,
+  clearErrors,
+  indicateInterestBegin,
+  indicateInterestSuccess,
+  indicateInterestFailure,
+  getCandidates,
+  createCandidateBegin,
+  createCandidateSuccess,
+  createCandidateFailure
+};

@@ -3,7 +3,7 @@ import About from './about/Layout';
 import Signup from './signup/Layout';
 import Login from './login/Layout';
 import CreateParty from './create-party/Layout';
-import UserProfile from './user-profile/Layout';
+import { UserProfile } from './user-profile/Layout';
 import AdminProfile from './admin-profile/Layout'
 import GetParties from './get-parties/Layout';
 import CreateOffice from './create-office/Layout';
@@ -20,7 +20,7 @@ export {
   Login,
   CreateParty,
   UserProfile,
-  AdminProfile,
+  AdminProfile, 
   GetParties,
   CreateOffice,
   AuthorizationHOC,

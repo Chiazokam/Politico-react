@@ -13,8 +13,8 @@ class GetParties extends Component {
   }
 
   getParties = () => {
-    const { dispatch } = this.props;
-    dispatch(getParties());
+    const { parties } = this.props;
+    parties();
   }
 
   render() {
@@ -63,8 +63,12 @@ class GetParties extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  parties: getParties
+};
+
 const mapStateToProps = state => ({
   getParties: state.party.getParties,
 });
 
-export default connect(mapStateToProps)(GetParties);
+export default connect(mapStateToProps, mapDispatchToProps)(GetParties);

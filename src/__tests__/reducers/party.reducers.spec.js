@@ -42,4 +42,14 @@ describe('partyReducer', () => {
       errors: 'error'
     });
   });
+
+  it('should return GET_PARTY_SUCCESS', () => {
+    expect(partyReducer(initialState, {
+      type: 'GET_PARTY_SUCCESS',
+      payload: []
+    })).toEqual({
+      ...initialState,
+      getParties: []
+    });
+  });
 });
