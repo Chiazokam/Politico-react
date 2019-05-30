@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Header, Footer, PlainStrip } from '../../components/global';
 import  { Showcase } from '../../components/user-profile';
 import { getCandidacy } from '../../actions';
+import { getUser, isCandidate } from '../../utils';
 
 class UserLayout extends Component {
   constructor(props) {
@@ -18,18 +19,14 @@ class UserLayout extends Component {
   }
 
   getCandidacy = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = localStorage.getItem('token');
-    const config = {
-      headers: { token }
-   };
-    const { dispatch } = this.props;
-    dispatch(getCandidacy(user.id, config));
+    const user = getUser();
+    const { getCandidacy } = this.props;
+    getCandidacy(user.id);
   }
 
   updateNavItems = () => {
-    const isCandidate = localStorage.getItem('isCandidate');
-    if(isCandidate === 'true') {
+    const isUserCandidate = isCandidate();
+    if(isUserCandidate === 'true') {
       this.setState({
         navItems: ['vote', 'run for an office', 'create petition', 'logout']
       });
@@ -49,11 +46,15 @@ class UserLayout extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  getCandidacy
+};
+
 const mapStateToProps = state => ({
   message: state.user.message
 });
 
-const UserProfile = connect(mapStateToProps)(UserLayout);
+const UserProfile = connect(mapStateToProps, mapDispatchToProps)(UserLayout);
 
 export {
   UserProfile,

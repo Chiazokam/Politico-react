@@ -4,7 +4,7 @@ import { PartyCard } from '../global';
 import { getParties } from '../../actions';
 import { getAdminStatus } from '../../utils';
 
-class GetParties extends Component {
+class GetPartiesUnit extends Component {
   constructor(props){
     super(props);
   }
@@ -71,4 +71,6 @@ const mapStateToProps = state => ({
   getParties: state.party.getParties,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetParties);
+const GetParties = connect(mapStateToProps, mapDispatchToProps)(GetPartiesUnit);
+
+export { GetParties, GetPartiesUnit }

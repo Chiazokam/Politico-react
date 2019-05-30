@@ -1,4 +1,4 @@
 import tokenExpired from './tokenExpired';
-import { getAdminStatus, getUser } from './getUserData';
+import { getAdminStatus, getUser, isCandidate } from './getUserData';
 
-export { tokenExpired, getAdminStatus, getUser };
+export { tokenExpired, getAdminStatus, getUser, isCandidate };

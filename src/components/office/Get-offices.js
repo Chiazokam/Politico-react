@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { OfficeCard } from '../global';
 import { getOffices } from '../../actions';
 
-class GetOffices extends Component {
+class GetOfficesUnit extends Component {
   componentDidMount() {
     this.getOffices();
   }
@@ -55,4 +55,6 @@ const mapStateToProps = state => ({
   getOffices: state.office.getOffices,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GetOffices);
+const GetOffices = connect(mapStateToProps, mapDispatchToProps)(GetOfficesUnit);
+
+export { GetOffices, GetOfficesUnit }

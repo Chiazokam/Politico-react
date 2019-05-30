@@ -7,7 +7,7 @@ import { Container, FormField, Button } from '../global';
 import { createParty, getParties } from '../../actions';
 import '../../styles/create-party/create-party.scss';
 
-class CreateParty extends Component {
+class CreatePartyUnit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -115,4 +115,6 @@ const mapStateToProps = state => ({
   redirect: state.party.redirect
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateParty);
+const CreateParty = connect(mapStateToProps, mapDispatchToProps)(CreatePartyUnit);
+
+export { CreateParty, CreatePartyUnit };

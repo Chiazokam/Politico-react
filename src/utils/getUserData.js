@@ -8,4 +8,9 @@ const getUser = () => {
   return user;
 }
 
-export { getAdminStatus, getUser };
+const isCandidate = () => {
+  const isCandidate = JSON.parse(localStorage.getItem('isCandidate'));
+  return isCandidate;
+}
+
+export { getAdminStatus, getUser, isCandidate };

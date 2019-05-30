@@ -1,3 +1,3 @@
-import Showcase from './Showcase';
+import { Showcase } from './Showcase';
 
 export { Showcase };

@@ -7,7 +7,7 @@ import { Container, FormField, Button } from '../global';
 import '../../styles/create-party/create-party.scss';
 import { createOffice, getOffices } from '../../actions';
  
-class CreateOffice extends Component {
+class CreateOfficeUnit extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -95,4 +95,6 @@ const mapStateToProps = state => ({
   submit: state.office.submit
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateOffice);
+const CreateOffice = connect(mapStateToProps, mapDispatchToProps)(CreateOfficeUnit);
+
+export { CreateOffice, CreateOfficeUnit }
