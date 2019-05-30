@@ -6,35 +6,53 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Container, FormField, Button } from '../global';
 import { createParty, getParties } from '../../actions';
 import '../../styles/create-party/create-party.scss';
+import { uploadImage, validateImage }  from '../../utils';
 
 class CreatePartyUnit extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      logoUrl: '',
-      hqAddress: ''
+      logoUrl: {},
+      hqAddress: '',
+      error: ''
     };
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
     e.preventDefault();
     this.setState({
       submit: true,
       errors: {},
     });
-    const party = {
-      name: this.state.name,
-      logoUrl: this.state.logoUrl,
-      hqAddress: this.state.hqAddress
-    };
-    const { parties, createParty } = this.props;
-    createParty(party);
-    parties();
+    const { name, logoUrl, hqAddress } = this.state;
+    const form = new FormData();
+    const isImageValid = validateImage(logoUrl);
+    if (isImageValid.valid) {
+      form.append('file', logoUrl);
+      const response = await uploadImage(form);
+
+      const party = {
+        name,
+        logoUrl: response.url,
+        hqAddress
+      };
+      const { parties, createParty } = this.props;
+      createParty(party);
+      parties();
+    } else {
+      this.setState({ error: isImageValid.message })
+    } 
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
+  }
+
+  handleFileChange = (e) => {
+    this.setState({
+      logoUrl: e.target.files[0]
+    })
   }
 
   clearField = (e) => {
@@ -42,7 +60,7 @@ class CreatePartyUnit extends Component {
   }
 
   render() {
-    const { errors, redirect } = this.props;
+    const { errors, redirect, submit } = this.props;
     if (redirect) return <Redirect to='/parties'/>;
     
     return (
@@ -50,15 +68,15 @@ class CreatePartyUnit extends Component {
         <Container>
           <p className='form-text'>Create Party</p>
           <p className='form-info'>All fields are compulsory</p>
-            <form onSubmit={this.handleSubmit.bind(this)}>
-              <div className="error">{errors.message}</div>
+            <form onSubmit={this.handleSubmit}>
+              <div className="error">{errors.message || this.state.error}</div>
               <FormField 
                 className='form-field'
                 type='text'
                 error={this.props.errors.name}
                 name='name'
-                onFocus={this.clearField.bind(this)}
-                onChange={this.handleChange.bind(this)}
+                onFocus={this.clearField}
+                onChange={this.handleChange}
                 value={this.state.name}
                 placeholder='Party Name'
               />
@@ -66,29 +84,29 @@ class CreatePartyUnit extends Component {
               <FormField 
                 className='form-field'
                 type='text'
-                error={errors.logoUrl}
-                name='logoUrl'
-                onFocus={this.clearField.bind(this)}
-                onChange={this.handleChange.bind(this)}
-                value={this.state.logoUrl}
-                placeholder='Logo Url'
-              />
-
-              <FormField 
-                className='form-field'
-                type='text'
                 error={errors.hqAddress}
                 name='hqAddress'
-                onFocus={this.clearField.bind(this)}
-                onChange={this.handleChange.bind(this)}
+                onFocus={this.clearField}
+                onChange={this.handleChange}
                 value={this.state.hqAddress}
                 placeholder='Party Head Quarters'
+              />
+
+              <p className='file-input-text'>Upload a logo</p>
+              <FormField 
+                className='form-field'
+                type='file'
+                error={errors.logoUrl}
+                name='logoUrl'
+                onFocus={this.clearField}
+                onChange={this.handleFileChange}
+                placeholder='Logo Url'
               />
 
               <Button
                 type="submit"
                 className="btn btn-colored btn-signin btn-dark">
-                { this.state.submit && <FontAwesomeIcon 
+                { submit && <FontAwesomeIcon 
                   icon={ faSpinner }
                   spin
                 /> }

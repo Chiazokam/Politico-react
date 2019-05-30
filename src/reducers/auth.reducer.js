@@ -1,5 +1,4 @@
 import auth from '../constants/auth.constants';
-
 const { SIGNUP_BEGIN, SIGNUP_SUCCESS, SIGNUP_FAILURE, SIGNIN_BEGIN, SIGNIN_SUCCESS, SIGNIN_FAILURE } = auth;
 
 const initialState = {
