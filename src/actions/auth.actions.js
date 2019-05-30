@@ -1,6 +1,5 @@
-import axios from 'axios';
+import axios from '../config/axiosConfig';
 import auth from '../constants/auth.constants';
-import { Url } from '../components/global';
 
 const { SIGNUP_BEGIN, SIGNUP_SUCCESS, SIGNUP_FAILURE, SIGNIN_BEGIN, SIGNIN_SUCCESS, SIGNIN_FAILURE } = auth;
 
@@ -14,14 +13,14 @@ const signupSuccess= () => ({
 
 const signupFailure= (error = {}) => ({
   type: SIGNUP_FAILURE,
-  payload: { error },
+  payload: error,
 });
 
 const signinBegin= () => ({
   type: SIGNIN_BEGIN,
 });
 
-const signinSuccess= (user, decode) => ({
+const signinSuccess= (user = {}, decode = {}) => ({
   type: SIGNIN_SUCCESS,
   payload: { 
     user,
@@ -34,20 +33,20 @@ const signinFailure = (error = {}) => ({
   payload: { error },
 });
 
-const signupUser = user => {
-  return dispatch => {
+const signupUser = user => async (dispatch) => {
+  try {
     dispatch(signupBegin());
-    axios.post(`${Url.herokuUrl}/auth/signup`, user)
-    .then((response) => dispatch(signupSuccess()))
-    .catch((error) => dispatch(signupFailure(error)))
+    const response = await axios.post('/auth/signup', user)
+    dispatch(signupSuccess())
+  } catch (error) {
+    dispatch(signupFailure(error.response.data.error))
+    }
   }
-}
 
-const signinUser = user => {
-  return dispatch => {
-    dispatch(signinBegin());
-    axios.post(`${Url.herokuUrl}/auth/login`, user)
-    .then((response) => {
+const signinUser = userObj => async (dispatch) => {
+    try {
+      dispatch(signinBegin());
+      const response = await axios.post('/auth/login', userObj);
       const { token, user } = response.data.data[0];
       localStorage.setItem('token', token);
       localStorage.setItem('user', JSON.stringify(user));
@@ -56,11 +55,10 @@ const signinUser = user => {
       const decode = JSON.parse(window.atob(base64Url));
       localStorage.setItem('isAdmin', decode.isAdmin);
       dispatch(signinSuccess(user, decode.isAdmin))
-
-    })
-    .catch((error) => dispatch(signinFailure(error.response)))
+    } catch (error) {
+      dispatch(signinFailure(error.response))
+    }
   }
-}
 
 export { signupBegin,
         signupSuccess,

@@ -8,7 +8,6 @@ import Container from './Container';
 import FormField from './FormField';
 import Url from './helper';
 import Logout from './Logout';
-import Back from './Back';
 import PartyCard from './Party-card';
 import OfficeCard from './Office-card';
 import ToastMessage from './ToastMessage';
@@ -24,7 +23,6 @@ export {
   FormField,
   Url,
   Logout,
-  Back,
   PartyCard,
   OfficeCard,
   ToastMessage

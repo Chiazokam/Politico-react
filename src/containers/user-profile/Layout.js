@@ -4,7 +4,7 @@ import { Header, Footer, PlainStrip } from '../../components/global';
 import  { Showcase } from '../../components/user-profile';
 import { getCandidacy } from '../../actions';
 
-class Layout extends Component {
+class UserLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,4 +53,9 @@ const mapStateToProps = state => ({
   message: state.user.message
 });
 
-export default connect(mapStateToProps)(Layout);
+const UserProfile = connect(mapStateToProps)(UserLayout);
+
+export {
+  UserProfile,
+  UserLayout
+}

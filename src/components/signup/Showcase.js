@@ -23,7 +23,8 @@ class Showcase extends Component {
   handleSubmit = (e) => {
    e.preventDefault();
     const { signupDetails } = this.state;
-    this.props.dispatch(signupUser(signupDetails));
+    const { signupUser } = this.props;
+    signupUser(signupDetails);
   }
 
   handleChange = (e) => {
@@ -33,7 +34,8 @@ class Showcase extends Component {
   }
 
   clearField = (e) => {
-    this.props.dispatch(clearField());
+    const { clearField } = this.props;
+    clearField();
   }
 
   render() {
@@ -133,6 +135,11 @@ class Showcase extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  signupUser,
+  clearField
+};
+
 const mapStateToProps = state => { 
   return {
     submit: state.auth.submit,
@@ -149,4 +156,4 @@ const mapStateToProps = state => {
    };
   }
 
-export default connect(mapStateToProps)(Showcase);
+export default connect(mapStateToProps, mapDispatchToProps)(Showcase);

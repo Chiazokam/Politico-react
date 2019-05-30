@@ -1,4 +1,3 @@
-import { CL } from '../constants/global.constants';
 const showModal= () => ({
   type: 'SHOW_MODAL',
 });

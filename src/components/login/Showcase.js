@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { Container, FormField, Url, Button } from '../global';
+import { Container, FormField, Button } from '../global';
 import Modal from './Reset-password-modal';
 import { showModal, closeModal } from '../../actions';
 import '../../styles/login/login.scss';
@@ -28,7 +28,8 @@ class Showcase extends Component {
       email: this.state.email,
       password: this.state.password,
     };
-    this.props.dispatch(signinUser(user));
+    const { signinUser } = this.props;
+    signinUser(user);
   }
 
   clearField = (e) => {
@@ -40,11 +41,13 @@ class Showcase extends Component {
   }
 
   showModal = () => {
-    this.props.dispatch(showModal());
+    const { showModal } = this.props;
+    showModal();
   }
 
   closeModal = () => {
-    this.props.dispatch(closeModal());
+    const { closeModal } = this.props;
+    closeModal();
   }
 
   render() {
@@ -98,6 +101,12 @@ class Showcase extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  signinUser,
+  showModal,
+  closeModal
+};
+
 const mapStateToProps = state => { 
   return {
     isModalOpen: state.global.isModalOpen,
@@ -110,5 +119,5 @@ const mapStateToProps = state => {
    };
   }
 
-export default connect(mapStateToProps)(Showcase);
+export default connect(mapStateToProps, mapDispatchToProps)(Showcase);
  

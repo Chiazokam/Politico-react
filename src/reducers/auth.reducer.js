@@ -37,7 +37,7 @@ const authReducer = (state = initialState, action) => {
     case SIGNUP_FAILURE:
       return {
         ...state,
-        signupErrors: action.payload.error.response.data.error,
+        signupErrors: action.payload,
         submit: false,
       }
       

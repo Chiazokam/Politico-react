@@ -22,13 +22,17 @@ class CreateOffice extends Component {
       name: this.state.name,
       type: this.state.type
     }
-   const { dispatch } = this.props;
-   dispatch(createOffice(office));
-   dispatch(getOffices());
+   const { offices, createOffice } = this.props;
+   createOffice(office);
+   offices();
   }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value});
+  }
+
+  clearField = (e) => {
+    this.setState({ errors: '' })
   }
 
   render() {
@@ -79,6 +83,11 @@ class CreateOffice extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  offices: getOffices,
+  createOffice,
+};
+
 const mapStateToProps = state => ({
   office: state.office.office,
   errors: state.office.errors,
@@ -86,4 +95,4 @@ const mapStateToProps = state => ({
   submit: state.office.submit
 });
 
-export default connect(mapStateToProps)(CreateOffice);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateOffice);

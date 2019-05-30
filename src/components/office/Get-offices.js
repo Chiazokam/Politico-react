@@ -9,8 +9,8 @@ class GetOffices extends Component {
   }
 
   getOffices = () => {
-    const { dispatch } = this.props;
-    dispatch(getOffices());
+    const { offices } = this.props;
+    offices();
   }
 
   render() {
@@ -47,8 +47,12 @@ class GetOffices extends Component {
   }
 }
 
+const mapDispatchToProps = {
+  offices: getOffices,
+};
+
 const mapStateToProps = state => ({
   getOffices: state.office.getOffices,
 });
 
-export default connect(mapStateToProps)(GetOffices);
+export default connect(mapStateToProps, mapDispatchToProps)(GetOffices);

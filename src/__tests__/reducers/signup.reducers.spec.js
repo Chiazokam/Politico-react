@@ -56,11 +56,11 @@ describe('authReducer', () => {
   it('should handle SIGN UP FAILURE', () => {
     expect(authReducer(initialState, {
       type: 'SIGNUP_FAILURE',
-      payload: { error: {response: { data: 'Some error occurred' }}}
+      payload: {}
     })).toEqual({
       ...initialState,
       signupRedirect: false,
-      signupErrors: undefined,
+      signupErrors: {},
     });
   });
 });
