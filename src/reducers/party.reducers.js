@@ -23,7 +23,7 @@ const partyReducer = (state = initialState, actions) => {
       return {
         ...state,
         submit: false,
-        party: actions.payload.party,
+        getParties: [actions.payload.party],
         redirect: true
       };
     case CREATE_PARTY_FAILURE:

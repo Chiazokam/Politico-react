@@ -31,10 +31,10 @@ class App extends Component {
         <Route path="/logout" component={Logout} />
         <AuthorizationHOC path="/user/profile" component={UserProfile} />
         <AuthorizationHOC path="/admin/profile" component={AdminProfile} />
+        <AuthorizationHOC exact path="/parties" component={GetParties} />
+        <AuthorizationHOC exact path="/offices" component={GetOffices} />
         <AuthorizationHOC path="/parties/new" component={CreateParty} />
         <AuthorizationHOC path="/offices/new" component={CreateOffice} />
-        <AuthorizationHOC path="/parties" component={GetParties} />
-        <AuthorizationHOC path="/offices" component={GetOffices} />
         <AuthorizationHOC path="/run for an office" component={BecomeCandidate} />
         <AuthorizationHOC path="/create a candidate" component={CreateCandidate} />
       </BrowserRouter>

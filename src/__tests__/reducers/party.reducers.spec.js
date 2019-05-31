@@ -28,7 +28,11 @@ describe('partyReducer', () => {
       ...initialState,
       redirect: true,
       submit: false,
-      party: party
+      getParties: [{
+        name: 'Slay Party',
+        logoUrl: 'slay.jpg',
+        hqAddress: 'Abuja',
+      }]
     });
   });
   it('should handle SIGN IN FAILURE', () => {
