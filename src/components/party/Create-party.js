@@ -39,7 +39,6 @@ class CreatePartyUnit extends Component {
       };
       const { parties, createParty } = this.props;
       createParty(party);
-      parties();
     } else {
       this.setState({ error: isImageValid.message })
     } 

@@ -41,7 +41,7 @@ class CreateOfficeUnit extends Component {
     return (
       <div id='create-office'>
         <Container>
-          <p className='form-text'>Create Party</p>
+          <p className='form-text'>Create Office</p>
           <p className='form-info'>All fields are compulsory</p>
             <form onSubmit={this.handleSubmit}>
               <div className='error'>{errors.message}</div>
